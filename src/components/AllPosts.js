@@ -1,10 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { fetchAllPosts } from "../api";
 
 
 const AllPosts = (props) => {
-  const { posts } = props;
-  return (
+  const { posts, setPosts } = props;
+  useEffect(() => {
+    const response = fetchAllPosts(setPosts, posts);
+    setPosts(response);
+  }, []);
+
+
+return (
     <div>
+      <div className="search-posts">
+                <h1>Posts</h1>
+                <form action="">
+                    <label htmlFor="">Search Posts</label>
+                    <input type="text" />
+                </form>
+                
+            </div>
       {Object.values(posts).map((post, index) => {
         return (
         <div className='posts'>    

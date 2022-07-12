@@ -7,10 +7,9 @@ const LogIn = () => {
                 <input type="text" minlength="8" required/>
                 <input type="text" minlength="8" required/>
                 <button>Log In</button>
-                <p><a href="">Don't have an account? Sign up</a></p>
+                <p><a href="/register">Don't have an account? Sign up</a></p>
             </form>
         </div>
-        
     )
 }
 
