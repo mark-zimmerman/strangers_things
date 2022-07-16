@@ -47,6 +47,7 @@ const App = () => {
     } 
   }, [loggedIn]);
   console.log(userName);
+  console.log(loggedIn);
 
   //   useEffect(() => {
   //       const getUserName = async () => {
@@ -70,7 +71,7 @@ const App = () => {
             {window.localStorage.getItem("token") ? (
               <Home userName={userName} />
             ) : (
-              <LogIn />
+              <LogIn setLoggedIn={setLoggedIn} setUserName={setUserName} userName={userName} password={password} setPassword={setPassword}/>
             )}
           </Route>
           <Route exact path="/posts">

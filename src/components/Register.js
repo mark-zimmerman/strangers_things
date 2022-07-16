@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { registerNewUser, sayHi, setLoggedIn } from "../api";
+import { registerNewUser } from "../api";
 //Check if the form is filled out correctly
 //We need to make an AJAX call to the backend (create?)
 //We need to get a token and store it in state maybe local storage
@@ -28,7 +28,7 @@ const Register = (props) => {
   };
   
   
-  console.log(userName);
+  
   console.log(token);
   return (
     <div className="log-in-container">

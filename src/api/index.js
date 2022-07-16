@@ -41,7 +41,6 @@ export async function registerNewUser(userName, password, setToken, token) {
 }
 
 export async function fetchMe(token, setUserName) {
-  console.log(token)
   fetch(`${baseURL}/users/me`, {
   headers: {
     'Content-Type': 'application/json',
@@ -53,6 +52,30 @@ export async function fetchMe(token, setUserName) {
     setUserName(result.data.username);
     window.localStorage.setItem('username', result.data.username);
     return result.data;
+  })
+  .catch(console.error);
+}
+
+export async function logIn(userName, password, setToken, setLoggedIn) {
+  console.log(userName);
+  console.log(password);
+  fetch(`${baseURL}/users/login`, {
+  method: "POST",
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    user: {
+      username: userName,
+      password: password
+    }
+  })
+}).then(response => response.json())
+  .then(result => {
+    console.log(result);
+    if (result.success) {
+      setLoggedIn(true);
+    }
   })
   .catch(console.error);
 }
