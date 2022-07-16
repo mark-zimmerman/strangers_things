@@ -15,10 +15,10 @@ import React from 'react';
 //         - Message Again: {title of post} (renders the send message page)
 const Profile = (props) => {
     const {userName, setUserName} = props;
-    
+    console.log(userName);
     return (
         <div>
-            <h1>Welcomed{userName}</h1>
+            <h1>Welcome {userName}</h1>
         </div>
     )
 }

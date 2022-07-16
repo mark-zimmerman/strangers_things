@@ -1,5 +1,5 @@
-import React, { useEffect }from "react";
-import { registerNewUser, sayHi } from "../api";
+import React, { useEffect } from "react";
+import { registerNewUser, sayHi, setLoggedIn } from "../api";
 //Check if the form is filled out correctly
 //We need to make an AJAX call to the backend (create?)
 //We need to get a token and store it in state maybe local storage
@@ -15,66 +15,46 @@ const Register = (props) => {
     token,
     setToken,
   } = props;
-  const handleUserChange = (event) => {
-    setUserName(event.target.value);
-  };
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-  // const handleConPasswordChange = (event) => {
-  //     setConPassword(event.target.value);
-  // }
- 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const usernameValue = document.getElementById("usernameInput").value;
-    const passwordValue = document.getElementById("passwordInput").value;
-    await setUserName(usernameValue);
-    await setPassword(passwordValue);
+
+
+  const fetchRegUser = (e) => {
+    e.preventDefault();
     try {
-      let response = await registerNewUser(userName, password, setToken);
-      setTokenLocalStorage();
+      registerNewUser(userName, password, setToken, token);
+
     } catch (error) {
       console.error(error);
     }
   };
-  const setTokenLocalStorage = () => {
-    window.localStorage.setItem("token", token);
-  };
   
-  useEffect(() => {
-    console.log(userName, password);
-    const callRegisterNewUser = async () => {
-    try {
-        let response = await registerNewUser(userName, password, setToken);
-        setTokenLocalStorage();
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  }, [userName, password])
-
+  
+  console.log(userName);
+  console.log(token);
   return (
     <div className="log-in-container">
       <h1 className="page-title">Register</h1>
-      <form action="" className="form" onSubmit={handleSubmit}>
+      <form action="" className="form" onSubmit={e=> fetchRegUser(e)}>
         <input
           type="text"
-        //   minLength="8"
+          onChange={function(event) {
+            setUserName(event.target.value)
+            window.localStorage.setItem('username', event.target.value);
+          }}
           name="username"
           id="usernameInput"
-        //   onChange={handleUserChange}
           required
         />
         <input
           type="text"
-        //   minLength="8"
+          onChange={function(event) {
+            // window.localStorage.setItem('password', event.target.value);
+            setPassword(event.target.value);
+          }}
           name="password"
           id="passwordInput"
-        //   onChange={handlePasswordChange}
           required
         />
-        {/* <input type="text" minLength="8" onChange={handleConPasswordChange}required/> */}
+        {/* <input type="text" minLength="8"required/> */}
         <button>Register</button>
       </form>
     </div>

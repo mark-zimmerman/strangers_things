@@ -3,7 +3,7 @@ import { fetchAllPosts } from "../api";
 
 
 const AllPosts = (props) => {
-  const { posts, setPosts } = props;
+  const { posts, setPosts, token } = props;
   useEffect(() => {
     const response = fetchAllPosts(setPosts, posts);
     setPosts(response);
