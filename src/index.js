@@ -28,24 +28,27 @@ const App = () => {
   
   
   useEffect(() => {
-    if (localStorage.token) {
-        setToken(localStorage.token);
+    if (window.localStorage.getItem('token')) {
+        setToken(window.localStorage.getItem('token'));
         setLoggedIn(true);
         setUserName(window.localStorage.getItem('username'));
+        const getMe = async () => {
+          const data = await fetchMe(token, setUserName);
+        };
+        getMe();
     }
-  }, []);
+  }, [token]);
   console.log(token);
   
-  useEffect(() => {
-    if (token) {
-      const getMe = async () => {
-        const data = await fetchMe(token, setUserName);
-        console.log(data);
-        
-      };
-      getMe();
-    } 
-  }, [loggedIn]);
+  // useEffect(() => {
+  //   if (window.localStorage.getItem(token)) {
+  //     const getMe = async () => {
+  //       const data = await fetchMe(token, setUserName);
+  //       setLoggedIn(true);
+  //     };
+  //     getMe();
+  //   } 
+  // }, [token, userName]);
   console.log(userName);
   console.log(loggedIn);
 
@@ -68,7 +71,7 @@ const App = () => {
         <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
         <Switch>
           <Route exact path="/">
-            {window.localStorage.getItem("token") ? (
+            {loggedIn ? (
               <Home userName={userName} />
             ) : (
               <LogIn setLoggedIn={setLoggedIn} setUserName={setUserName} userName={userName} password={password} setPassword={setPassword}/>
@@ -76,6 +79,9 @@ const App = () => {
           </Route>
           <Route exact path="/posts">
             <AllPosts posts={posts} setPosts={setPosts} token={token} />
+            {loggedIn && <AddNewPost />
+            }
+
           </Route>
           <Route exact path="/register">
             <Register
@@ -88,7 +94,7 @@ const App = () => {
               setLoggedIn={setLoggedIn}
             />
           </Route>
-          <AddNewPost exact path="/add-new-post" />
+          
           <Route exact path="/profile">
             <Profile
               userName={userName}

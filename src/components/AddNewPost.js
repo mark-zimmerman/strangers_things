@@ -6,10 +6,10 @@ const AddNewPost = () => {
         <div className="add-new-post">
             <h1>Add New Post</h1>
             <form action="" className="form">
-                <input type="text" value='Title'/>
-                <input type="text" value='Description'/>
-                <input type="text" value='Price'/>
-                <input type="text" value='Location'/>
+                <input type="text" placeholder='Title'/>
+                <input type="text" placeholder='Description'/>
+                <input type="text" placeholder='Price'/>
+                <input type="text" placeholder='Location'/>
                 <label htmlFor="">Will Deliver?</label>
                 <input type="checkbox"/>
                 <button>Create</button>

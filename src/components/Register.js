@@ -36,6 +36,7 @@ const Register = (props) => {
       <form action="" className="form" onSubmit={e=> fetchRegUser(e)}>
         <input
           type="text"
+          placeholder="Username"
           onChange={function(event) {
             setUserName(event.target.value)
             window.localStorage.setItem('username', event.target.value);
@@ -46,6 +47,7 @@ const Register = (props) => {
         />
         <input
           type="text"
+          placeholder="Password"
           onChange={function(event) {
             // window.localStorage.setItem('password', event.target.value);
             setPassword(event.target.value);

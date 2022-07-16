@@ -2,8 +2,7 @@ import React from 'react';
 
 const Header = ({loggedIn, setLoggedIn}) => {
     function logOut() {
-        delete localStorage.token;
-        delete localStorage.username;
+        window.localStorage.clear();
         setLoggedIn(false); 
       }
     

@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { useState, useEffect } from "react";
 // - Profile Page 
 //     - Welcome {username}
 //     - Messages to me
@@ -14,11 +13,18 @@ import React from 'react';
 //         - 'whatever the message was'
 //         - Message Again: {title of post} (renders the send message page)
 const Profile = (props) => {
-    const {userName, setUserName} = props;
+    const {userName, setUserName, token} = props;
+    const [messages, setMessages] = useState(['hi']);
+  useEffect(() => {
+    const response = fetchMe(token);
+    setMessages(response.data.messages);
+  }, []);
+    console.log(messages);
     console.log(userName);
     return (
         <div>
             <h1>Welcome {userName}</h1>
+
         </div>
     )
 }

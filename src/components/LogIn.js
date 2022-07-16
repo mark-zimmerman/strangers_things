@@ -22,6 +22,7 @@ const LogIn = (props) => {
       };
       console.log(userName);
       console.log(password);
+   
       return (
      <> 
        <div className="log-in-container">

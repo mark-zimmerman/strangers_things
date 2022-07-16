@@ -51,6 +51,7 @@ export async function fetchMe(token, setUserName) {
     console.log(result.data.username);
     setUserName(result.data.username);
     window.localStorage.setItem('username', result.data.username);
+    console.log(result.data.messages)
     return result.data;
   })
   .catch(console.error);
@@ -75,6 +76,7 @@ export async function logIn(userName, password, setToken, setLoggedIn) {
     console.log(result);
     if (result.success) {
       setLoggedIn(true);
+      window.localStorage.setItem('token', result.data.token);
     }
   })
   .catch(console.error);
