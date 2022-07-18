@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    display: flex; 
+    flex-direction: row;
+    background-color:rgb(24, 35, 68);
+    color: white;
+    height: 80px;
+    
+}
+.nav-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    
+}
+li {
+    align-items: center;
+    line-height: 100%;
+    list-style: none;
+    text-align: center;
+    margin: auto;
+    cursor: pointer;
+    margin-right: 15px;
+    
+}
+.logo {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 30px;
+}
+nav {
+    width: 50%;
+    display: flex;
+    justify-content: end;
+}
+.post {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.add-new-post {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: auto;
+    flex-grow: none;
+
+}
+.log-in-container {
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    margin-top: 50px;
+
+}
+.page-title {
+    text-align: center;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.form > input {
+    height: 3rem;
+    margin: 10px 0;
+    width: 100%;
+    font-size: 1.2rem;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+}
+.search-posts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+.search-posts h1 {
+    margin-bottom: 15px;
+}
+.search-posts label {
+    margin: 0 10px 0 10px;
+}
+/* .search-posts form {
+    width: 50%;
+
+} */
