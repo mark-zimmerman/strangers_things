@@ -79,7 +79,7 @@ const App = () => {
           </Route>
           <Route exact path="/posts">
             <AllPosts posts={posts} setPosts={setPosts} token={token} />
-            {loggedIn && <AddNewPost />
+            {loggedIn && <AddNewPost token={token}/>
             }
 
           </Route>

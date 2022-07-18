@@ -51,7 +51,7 @@ export async function fetchMe(token, setUserName) {
     console.log(result.data.username);
     setUserName(result.data.username);
     window.localStorage.setItem('username', result.data.username);
-    console.log(result.data.messages)
+    console.log(result);
     return result.data;
   })
   .catch(console.error);
@@ -81,3 +81,28 @@ export async function logIn(userName, password, setToken, setLoggedIn) {
   })
   .catch(console.error);
 }
+//Add individual post
+export async function addNewPost(newTitle, newDescription, newPrice, newLocation, newWillDeliver, token) {
+  console.log(token)
+  console.log()
+  fetch(`${baseURL}/posts`, {
+  method: "POST",
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  },
+  body: JSON.stringify({
+    post: {
+      title: newTitle,
+      description: newDescription,
+      price: newPrice,
+      willDeliver: newWillDeliver
+    }
+  })
+}).then(response => response.json())
+  .then(result => {
+    console.log(result);
+  })
+  .catch(console.error);
+}
+

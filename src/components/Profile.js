@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { fetchMe } from "../api";
 // - Profile Page 
 //     - Welcome {username}
 //     - Messages to me
@@ -17,7 +18,7 @@ const Profile = (props) => {
     const [messages, setMessages] = useState(['hi']);
   useEffect(() => {
     const response = fetchMe(token);
-    setMessages(response.data.messages);
+    // setMessages(response.data.messages);
   }, []);
     console.log(messages);
     console.log(userName);
