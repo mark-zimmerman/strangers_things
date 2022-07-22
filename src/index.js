@@ -14,7 +14,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { fetchMe } from "./api";
 const App = () => {
   const baseURL =
-    "https://strangers-things.herokuapp.com/api/2206-FTB-ET-WEB-FT/posts";
+    "https://strangers-things.herokuapp.com/api/2206-FTB-ET-WEB-FT-b/posts";
   const [posts, setPosts] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
   const [userName, setUserName] = useState("");
@@ -31,40 +31,16 @@ const App = () => {
     if (window.localStorage.getItem('token')) {
         setToken(window.localStorage.getItem('token'));
         setLoggedIn(true);
-        setUserName(window.localStorage.getItem('username'));
         const getMe = async () => {
-          const data = await fetchMe(token, setUserName);
+          const result = await fetchMe(token, setUserName);
+          console.log(result);
+          await setUserName(result.data.username);
+          // window.localStorage.setItem('username', result.data.username);
         };
         getMe();
     }
   }, [token]);
-  console.log(token);
   
-  // useEffect(() => {
-  //   if (window.localStorage.getItem(token)) {
-  //     const getMe = async () => {
-  //       const data = await fetchMe(token, setUserName);
-  //       setLoggedIn(true);
-  //     };
-  //     getMe();
-  //   } 
-  // }, [token, userName]);
-  console.log(userName);
-  console.log(loggedIn);
-
-  //   useEffect(() => {
-  //       const getUserName = async () => {
-  //         if (!userName) {
-  //                 console.log(`this is our userName in LS: ${window.localStorage.getItem('username')}` );
-  //                 setUserName(window.localStorage.getItem('username'));
-
-  //             } else {
-  //                 console.log(`we have a username: ${userName}`);
-  //             }
-  //       }
-  //       getUserName();
-  //   }, [])
-
   return (
     <Router>
       <>

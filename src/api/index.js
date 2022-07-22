@@ -1,14 +1,13 @@
 import React from 'react';
 
 
-export const baseURL = "https://strangers-things.herokuapp.com/api/2206-FTB-ET-WEB-FT";
+export const baseURL = "https://strangers-things.herokuapp.com/api/2206-FTB-ET-WEB-FT-b";
 
 export async function fetchAllPosts(setPosts, posts) {
         try {
           const response = await fetch(`${baseURL}/posts`);
           const data = await response.json();
           setPosts(data.data.posts);
-          console.log(data)
           return posts;
         } catch (error) {
           console.error(error);
@@ -16,9 +15,6 @@ export async function fetchAllPosts(setPosts, posts) {
         
 } 
 export async function registerNewUser(userName, password, setToken, token) {
-    console.log('hi');
-    console.log(userName)
-    console.log(password)
   fetch(`${baseURL}/users/register`, {
       method: "POST",
       headers: {
@@ -32,7 +28,7 @@ export async function registerNewUser(userName, password, setToken, token) {
       })
     }).then(response => response.json())
       .then(result => {
-        console.log(';lakjsdf;lakjsdf', result)
+        console.log('userName');
         setToken(result.data.token);
         window.localStorage.setItem('token', result.data.token);
         return result.data.token;
@@ -40,22 +36,19 @@ export async function registerNewUser(userName, password, setToken, token) {
       .catch(console.error);
 }
 
-export async function fetchMe(token, setUserName) {
-  fetch(`${baseURL}/users/me`, {
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token}`
-  },
-}).then(response => response.json())
-  .then(result => {
-    console.log(result.data.username);
-    setUserName(result.data.username);
-    window.localStorage.setItem('username', result.data.username);
-    console.log(result);
-    return result.data;
-  })
-  .catch(console.error);
-}
+export async function fetchMe(token) {
+  const response = await fetch(`${baseURL}/users/me`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+    });
+  const data = await response.json();
+  console.log(data);
+  return data;
+  }
+ 
+
 
 export async function logIn(userName, password, setToken, setLoggedIn) {
   console.log(userName);
@@ -82,27 +75,43 @@ export async function logIn(userName, password, setToken, setLoggedIn) {
   .catch(console.error);
 }
 //Add individual post
+// export async function addNewPost(newTitle, newDescription, newPrice, newLocation, newWillDeliver, token) {
+//   const response = await fetch(`${baseURL}/posts`, {
+//   method: "POST",
+//   headers: {
+//     'Content-Type': 'application/json',
+//     'Authorization': `Bearer ${token}`
+//   },
+//   body: JSON.stringify({
+//     post: {
+//       title: newTitle,
+//       description: newDescription,
+//       price: newPrice,
+//       willDeliver: newWillDeliver
+//     }
+//   })
+// });
+// const data = response.json()
+// console.log(data);
+// }
+//Add individual post
 export async function addNewPost(newTitle, newDescription, newPrice, newLocation, newWillDeliver, token) {
-  console.log(token)
-  console.log()
-  fetch(`${baseURL}/posts`, {
-  method: "POST",
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token}`
-  },
-  body: JSON.stringify({
-    post: {
-      title: newTitle,
-      description: newDescription,
-      price: newPrice,
-      willDeliver: newWillDeliver
-    }
-  })
-}).then(response => response.json())
-  .then(result => {
-    console.log(result);
-  })
-  .catch(console.error);
+  const response = await fetch(`${baseURL}/posts`, {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({
+      post: {
+        title: newTitle,
+        description: newDescription,
+        price: newPrice,
+        willDeliver: newWillDeliver
+      }
+    })
+  });
+  const data = response.json();
+  console.log(data);
+  return data;
 }
-
