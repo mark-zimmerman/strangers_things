@@ -3,7 +3,7 @@ import { deletePost, fetchAllPosts } from "../api";
 export const baseURL = "https://strangers-things.herokuapp.com/api/2206-FTB-ET-WEB-FT-b";
 
 const MyPost = (props) => {
-  const { postId, setPostId, setPosts, posts, userName, token } = props;
+  const { postId, setPostId, setPosts, posts, userName, token, setMessages, messages } = props;
 
   useEffect(() => {
     async function fetchMe() {
@@ -37,6 +37,7 @@ const MyPost = (props) => {
   })
   .catch(console.error);
   }
+  console.log(messages)
   return (
     <div>
       {Object.values(posts).map((post, index) => {
@@ -66,12 +67,14 @@ const MyPost = (props) => {
                 <button>Edit</button>
               </div>
             </div>
+
           );
+
         }      
       })}
-      {/* <h1>Messages regarding this post</h1>
+      <h1>Messages regarding this post</h1>
       {Object.values(messages).map((message, index) => {
-      if (message.fromUser === userName) {
+      if (message.post._id === postId) {
       return (
         <div className='posts'>    
             <div key={index} className='post'>
@@ -82,7 +85,8 @@ const MyPost = (props) => {
         </div>
         );
       }
-      })}  */}
+      })} 
+
     </div>
   );
 };

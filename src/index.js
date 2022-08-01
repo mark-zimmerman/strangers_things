@@ -87,6 +87,7 @@ const App = () => {
               userName={userName}
               token={token}
               setMessages={setMessages}
+              messages={messages}
             />
           </Route>
           <Route exact path="/profile">

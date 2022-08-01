@@ -26,7 +26,7 @@ const Profile = (props) => {
   return (
     <div>
      <h1>Welcome {userName}</h1>
-     <h1>Messages to me</h1>
+     <h3>Messages to me</h3>
      {Object.values(messages).map((message, index) => {
       if (message.fromUser !== userName) {
       return (
@@ -40,7 +40,7 @@ const Profile = (props) => {
         );
       }
       })} 
-      <h1>Messages from me</h1>
+      <h3>Messages from me</h3>
       {Object.values(messages).map((message, index) => {
       if (message.fromUser === userName) {
       return (
