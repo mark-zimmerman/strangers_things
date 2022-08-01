@@ -1,9 +1,5 @@
 import React, { useEffect } from "react";
 import { registerNewUser } from "../api";
-//Check if the form is filled out correctly
-//We need to make an AJAX call to the backend (create?)
-//We need to get a token and store it in state maybe local storage
-//
 
 const Register = (props) => {
   const {
@@ -16,7 +12,6 @@ const Register = (props) => {
     setToken,
   } = props;
 
-
   const fetchRegUser = (e) => {
     e.preventDefault();
     try {
@@ -26,10 +21,7 @@ const Register = (props) => {
       console.error(error);
     }
   };
-  
-  
-  
-  console.log(token);
+
   return (
     <div className="log-in-container">
       <h1 className="page-title">Register</h1>

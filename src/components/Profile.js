@@ -1,33 +1,62 @@
 import React, { useState, useEffect } from "react";
 import { fetchMe } from "../api";
-// - Profile Page 
-//     - Welcome {username}
-//     - Messages to me
-//         - Array of messages
-//         - From: {sender}
-//         - message.. 'im interested in.. blah blah'
-//         - View My Post: {title of post}. 
-//     ((Renders the Individual Post Page))
-//     - Messages from me
-//         - Array of messages
-//         - (Sent By Me)
-//         - 'whatever the message was'
-//         - Message Again: {title of post} (renders the send message page)
+export const baseURL = "https://strangers-things.herokuapp.com/api/2206-FTB-ET-WEB-FT-b";
 const Profile = (props) => {
-    const {userName, setUserName, token} = props;
-    const [messages, setMessages] = useState(['hi']);
+    const {userName, setUserName, token, messages, setMessages} = props;
+    
   useEffect(() => {
-    const response = fetchMe(token);
-    // setMessages(response.data.messages);
+    async function fetchMe() {
+      try {
+        const response = await fetch(`${baseURL}/users/me`, {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+        });
+        const data = await response.json();
+        setMessages(data.data.messages);
+        return data;
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchMe()
   }, []);
-    console.log(messages);
-    console.log(userName);
-    return (
-        <div>
-            <h1>Welcome {userName}</h1>
-
+  
+  return (
+    <div>
+     <h1>Welcome {userName}</h1>
+     <h1>Messages to me</h1>
+     {Object.values(messages).map((message, index) => {
+      if (message.fromUser !== userName) {
+      return (
+        <div className='posts'>    
+            <div key={index} className='post'>
+                <p>From: {message.fromUser.username}</p>
+                <p>{message.content}</p>
+                <p>Post: {message.post.title}</p>
+            </div>
         </div>
-    )
+        );
+      }
+      })} 
+      <h1>Messages from me</h1>
+      {Object.values(messages).map((message, index) => {
+      if (message.fromUser === userName) {
+      return (
+        <div className='posts'>    
+            <div key={index} className='post'>
+                <p>From: {message.fromUser.username}</p>
+                <p>{message.content}</p>
+                <p>Post: {message.post.title}</p>
+            </div>
+        </div>
+        );
+      }
+      })} 
+    </div>
+    
+  )
 }
 
 export default Profile;
