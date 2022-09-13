@@ -24,13 +24,14 @@ const Profile = (props) => {
   }, []);
   
   return (
-    <div>
+    <div class="profile">
      <h1>Welcome {userName}</h1>
      <h3>Messages to me</h3>
      {Object.values(messages).map((message, index) => {
-      if (message.fromUser !== userName) {
+      if (message.fromUser.username !== userName) {
+        console.log('from them', message.fromUser)
       return (
-        <div className='posts'>    
+        <div className='message'>    
             <div key={index} className='post'>
                 <p>From: {message.fromUser.username}</p>
                 <p>{message.content}</p>
@@ -42,9 +43,10 @@ const Profile = (props) => {
       })} 
       <h3>Messages from me</h3>
       {Object.values(messages).map((message, index) => {
-      if (message.fromUser === userName) {
+      if (message.fromUser.username === userName) {
+     
       return (
-        <div className='posts'>    
+        <div className='message'>    
             <div key={index} className='post'>
                 <p>From: {message.fromUser.username}</p>
                 <p>{message.content}</p>

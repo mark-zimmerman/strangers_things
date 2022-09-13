@@ -24,7 +24,7 @@ const AddNewPost = (props) => {
     return (
         <div className="add-new-post">
             <h1>Add New Post</h1>
-            <form action="" className="form" onSubmit={e=> addPost(e)}>
+            <form action="" className="form new-post-form" onSubmit={e=> addPost(e)}>
                 <input type="text" placeholder='Title'
                 onChange={function(event) {
                     title = event.target.value;

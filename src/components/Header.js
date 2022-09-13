@@ -8,7 +8,7 @@ const Header = ({ loggedIn, setLoggedIn }) => {
 
   return (
     <header className="header">
-      <h1 className="logo">Stranger's Things</h1>
+      <h1 className="logo title-font">Stranger's Things</h1>
       <nav>
         <ul className="nav-list">
           <li>

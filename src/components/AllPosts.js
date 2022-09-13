@@ -1,62 +1,78 @@
 import React, { useState, useEffect } from "react";
 import { fetchAllPosts } from "../api";
-import { useHistory } from 'react-router-dom';
-const baseURL = "https://strangers-things.herokuapp.com/api/2206-FTB-ET-WEB-FT-b";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
+// const baseURL =
+//   "https://strangers-things.herokuapp.com/api/2206-FTB-ET-WEB-FT-b";
 
 const AllPosts = (props) => {
   const history = useHistory();
-  const { posts, setPosts, token, userName, setPostId, postId } = props;
+  const { posts, setPosts, token, userName, setPostId, postId, setActiveMessage, activeMessage } = props;
+  const [searchTerm, setSearchTerm] = useState('');
   useEffect(() => {
-   
-async function fetchAllPosts() {
-  try {
-    const response = await fetch(`${baseURL}/posts`);
-    const data = await response.json();
-    setPosts(data.data.posts);
-    // console.log(data);
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
-  
-} 
-fetchAllPosts();
+    async function getAllPosts() {
+      const allPosts = await fetchAllPosts();
+      setPosts(allPosts);
+      console.log(posts);
+    }
+    getAllPosts();
   }, []);
-  
+
   useEffect(() => {
     console.log(postId);
-  }, [postId, setPostId])
-return (
-    <div>
+  }, [postId, setPostId]);
+    
+  return (
+    <div id="posts">
       <div className="search-posts">
-                <h1>Posts</h1>
-                <form action="">
-                    <label htmlFor="">Search Posts</label>
-                    <input type="text" />
-                </form>
-                
-            </div>
-      {Object.values(posts).map((post, index) => {
+        <h1>Posts</h1>
+        <form action="">
+          <input type="text" placeholder="Search Posts" onChange={(event) => setSearchTerm(event.target.value)}/>
+        </form>
+      </div>
+      {Object.values(posts).filter((post)=> {
+        if (searchTerm == "") {
+          return post;
+        } else if (post.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+          return post;
+        }
+      }).map((post, index) => {
         return (
-        <div className='posts'>    
-            <div key={index} className='post'>
-                <h3>{post.title}</h3>
-                <p>{post.description}</p>
-                <p><b>Price:</b> {post.price}</p>
-                <p><b>Seller:</b> {post.author.username}</p>
-                <p><b>Location:</b> {post.location}</p>
-                {post.author.username !== userName ? <button>Send Message</button> :
-                <a onClick={ async () => {
-                  await setPostId(post._id);
-                  console.log('hi');
-                  history.push('/mypost')
-                  }}>
-                  <button 
-                >View Post</button>
+          <div className="posts">
+            <div key={index} className="post">
+              <h3>{post.title}</h3>
+              <p>{post.description}</p>
+              <div className="post-info">  
+                <p>
+                  <b>Price:</b> {post.price}
+                </p>
+                <p>
+                  <b>Seller:</b> {post.author.username}
+                </p>
+                <p>
+                  <b>Location:</b> {post.location}
+                </p>
+              </div>
+              {post.author.username !== userName ? (
+                <button className="post-btn" onClick={(event) => {
+                  setActiveMessage({
+                    post: post,
+                  })
+                  console.log(activeMessage);
+                }}>Send Message</button>
+              ) : (
+                <a
+                  onClick={async () => {
+                    await setPostId(post._id);
+                    console.log("hi");
+                    history.push("/mypost");
+                  }}
+                >
+                  <button className="post-btn">View Post</button>
                 </a>
-                }
+              )}
             </div>
-        </div>
+          </div>
         );
       })}
     </div>

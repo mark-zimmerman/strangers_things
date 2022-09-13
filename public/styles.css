@@ -1,7 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tiro+Bangla&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+.title-font {
+    font-family: 'Tiro Bangla', serif;
 }
 
 .header {
@@ -44,17 +51,36 @@ nav {
 }
 .post {
     background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    border-top: lightgray solid 1px;
+    padding: 10px;
+    
+}
+.post > * {
+    width: 70%;
+}
+.post > p {
+    text-align: center;
 }
 .add-new-post {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border: lightgray solid 1px;
+    padding: 10px;
+    margin: 121px 0 0 40px;
+    height: max-content;
+    flex: 1 1 0;
+    border-radius: 5px;
 }
 .form {
     display: flex;
     flex-direction: column;
-    width: 400px;
+  
     margin: auto;
     flex-grow: none;
 
@@ -101,3 +127,75 @@ nav a {
     width: 50%;
 
 } */
+.posts-container {
+    display: flex;
+    justify-content: center;
+}
+#posts {
+    flex: 2 1 0;
+}
+/* .add-new-post {
+    height: max-content;
+    flex: 1 1 0;
+    margin: 25px;
+} */
+.add-new-post > h1 {
+    text-align:center;
+}
+.post-btn {
+    margin: 0 auto;
+    width: 100px;
+
+}
+.post > h3 {
+    text-align: center;
+}
+.post-info {
+    width: 20%;
+    text-align: start;
+} 
+.posts-component-container {
+    display: flex;
+    margin: 0 30px 0 30px;
+}
+.new-post-form {
+    margin-top: 40px;
+}
+.message {
+    width: 80%;
+    
+}
+.profile {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+.profile > h3 {
+    margin: 50px 0 20px 0;
+}
+.post > a {
+    width: min-content;
+}
+/* .post:last-child {
+    border-bottom: lightgray solid 1px;
+} */
+button {
+    background-color: rgb(24, 35, 68);
+    color: white;
+    border: none;
+    height: 1.5rem;
+    border-radius: 3px;
+    min-width: 100px;
+}
+
+input[type='checkbox'] { 
+    background-color:rgb(24, 35, 68);
+    height: 15px;
+}
+input:checked {
+    background-color: green;
+}
+.add-new-post {
+    text-align: center;
+}

@@ -6,3 +6,5 @@ export {default as Register} from './Register';
 export {default as Profile} from './Profile';
 export {default as MyPost} from './MyPost';
 export {default as Home} from './Home';
+export {default as App} from './App';
+export {default as SendMessage} from './SendMessage'
