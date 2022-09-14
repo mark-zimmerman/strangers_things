@@ -59,7 +59,7 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-items:center;
-    border-top: lightgray solid 1px;
+    border-top: #273043 solid 1px;
     padding: 10px;
     background-color: #EFF6EE;
     
@@ -82,7 +82,7 @@ b {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border: lightgray solid 1px;
+    border: #273043 solid 1px;
     padding: 10px;
     margin: 121px 0 0 40px;
     height: max-content;
@@ -213,6 +213,11 @@ button {
     height: 1.5rem;
     border-radius: 3px;
     min-width: 100px;
+}
+button:hover {
+    background-color: #6F59FF;
+    color: #EFF6EE;
+    transition:0.3s;
 }
 
 input[type='checkbox'] { 
