@@ -25,6 +25,7 @@ const App = () => {
   const [messages, setMessages] = useState([]);
   const [activeMessage, setActiveMessage] = useState({});
   const [newMessage, setNewMessage] = useState("");
+  const [edit, setEdit] = useState(true);
   
   useEffect(() => {
     if (window.localStorage.getItem("token")) {
@@ -82,7 +83,7 @@ const App = () => {
                 token={token}
                 />
               )}
-              {loggedIn && <AddNewPost token={token} />}
+              {(loggedIn && !activeMessage) && <AddNewPost token={token} />}
             </div>
           </Route>
           <Route exact path="/register">
@@ -106,6 +107,8 @@ const App = () => {
               token={token}
               setMessages={setMessages}
               messages={messages}
+              edit={edit}
+              setEdit={setEdit}
             />
           </Route>
           <Route exact path="/profile">

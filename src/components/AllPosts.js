@@ -13,6 +13,7 @@ const AllPosts = (props) => {
     async function getAllPosts() {
       const allPosts = await fetchAllPosts();
       setPosts(allPosts);
+      setActiveMessage('');
       console.log(posts);
     }
     getAllPosts();
@@ -43,8 +44,8 @@ const AllPosts = (props) => {
               <h3>{post.title}</h3>
               <p>{post.description}</p>
               <div className="post-info">  
-                <p>
-                  <b>Price:</b> {post.price}
+                <p className="price">
+                  <b >Price: </b>{post.price} 
                 </p>
                 <p>
                   <b>Seller:</b> {post.author.username}

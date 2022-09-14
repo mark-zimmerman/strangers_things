@@ -154,3 +154,32 @@ export async function createMessage(newMessage, post, token) {
     console.log(error);
   }
 }
+
+//What we need to pass in as params: postID, token, title, description, price, location, willDeliver
+export async function editPost(postId, token, title, description, price, location, willDeliver) {
+  try {
+    fetch(`${baseURL}/posts/${postId}`, {
+  method: "PATCH",
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  },
+  body: JSON.stringify({
+    post: {
+      title: `${title}`,
+      description: `${description}`,
+      price: `${price}`,
+      location: `${location}`,
+      willDeliver: `${willDeliver}`
+    }
+  })
+}).then(response => response.json())
+  .then(result => {
+    console.log(result);
+    return result;
+  })
+  .catch(console.error);
+  } catch (error) {
+    console.log(error);
+  }
+}
