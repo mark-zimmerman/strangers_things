@@ -65,7 +65,7 @@ const MyPost = (props) => {
                     <button 
                   >Delete</button>
                   </a>
-                  <button onClick={ async () => {
+                  <button className="edit-button" onClick={ async () => {
                     setEdit(true);
                   }}>Edit</button>
                 </div>

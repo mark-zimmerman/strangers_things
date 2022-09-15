@@ -7,8 +7,10 @@ import { useHistory } from "react-router-dom";
 
 const AllPosts = (props) => {
   const history = useHistory();
-  const { posts, setPosts, token, userName, setPostId, postId, setActiveMessage, activeMessage } = props;
+  const { posts, setPosts, token, userName, setPostId, postId, setActiveMessage, activeMessage, width, setWidth, createPost, setCreatePost } = props;
   const [searchTerm, setSearchTerm] = useState('');
+  const breakpoint = 850;
+  
   useEffect(() => {
     async function getAllPosts() {
       const allPosts = await fetchAllPosts();
@@ -17,6 +19,7 @@ const AllPosts = (props) => {
       console.log(posts);
     }
     getAllPosts();
+    
   }, []);
 
   useEffect(() => {
@@ -30,6 +33,10 @@ const AllPosts = (props) => {
         <form action="">
           <input type="text" placeholder="Search Posts" onChange={(event) => setSearchTerm(event.target.value)}/>
         </form>
+        <button onClick={(event)=> {
+          setCreatePost(true);
+          console.log(createPost)
+        }}>+ Add New Post</button>
       </div>
       {Object.values(posts).filter((post)=> {
         if (searchTerm == "") {

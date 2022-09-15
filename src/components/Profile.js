@@ -49,7 +49,7 @@ const Profile = (props) => {
         <div className='message'>    
             <div key={index} className='post'>
                 <p>From: {message.fromUser.username}</p>
-                <p>{message.content}</p>
+                <p className="message-content">{message.content}</p>
                 <p>Post: {message.post.title}</p>
             </div>
         </div>

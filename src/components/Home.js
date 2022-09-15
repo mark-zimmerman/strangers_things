@@ -8,7 +8,7 @@ const Home = (props) => {
     // - View Prifile button (renders profile page)
     
     return (
-        <div>
+        <div className="home-container">
             <h1>Welcome to Stranger's Things</h1>
             <p>Logged in as {userName}</p>
             <a href="/profile"><button>View Profile</button></a>

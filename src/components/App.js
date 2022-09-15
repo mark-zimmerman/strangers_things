@@ -9,7 +9,7 @@ import {
   Profile,
   Home,
   MyPost,
-  SendMessage
+  SendMessage,
 } from "./index";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { fetchMe } from "../api";
@@ -26,7 +26,9 @@ const App = () => {
   const [activeMessage, setActiveMessage] = useState({});
   const [newMessage, setNewMessage] = useState("");
   const [edit, setEdit] = useState(true);
-  
+  const [width, setWidth] = useState(window.innerWidth);
+  const [createPost, setCreatePost] = useState(false);
+  const breakpoint = 850;
   useEffect(() => {
     if (window.localStorage.getItem("token")) {
       setToken(window.localStorage.getItem("token"));
@@ -40,8 +42,14 @@ const App = () => {
       };
       getMe();
     }
+    const handleWindowResize = () => {
+      setWidth(window.innerWidth);
+      window.addEventListener("resize", handleWindowResize);
+      return () => window.removeEventListener("resize", handleWindowResize);
+    };
+    handleWindowResize();
   }, [token]);
-  
+
   return (
     <Router>
       <>
@@ -60,30 +68,39 @@ const App = () => {
               />
             )}
           </Route>
-          
+
           <Route exact path="/posts">
             <div className="posts-component-container">
-              {Object.keys(activeMessage).length === 0  ? (
-              <AllPosts
-                setPostId={setPostId}
-                postId={postId}
-                userName={userName}
-                posts={posts}
-                setPosts={setPosts}
-                token={token}
-                setActiveMessage={setActiveMessage}
-                activeMessage={activeMessage}
-              /> 
-              ) : (
-                <SendMessage 
-                activeMessage={activeMessage}
-                setActiveMessage={setActiveMessage}
-                newMessage={newMessage}
-                setNewMessage={setNewMessage}
-                token={token}
+              {createPost === false &&
+              Object.keys(activeMessage).length === 0 ? (
+                <AllPosts
+                  setPostId={setPostId}
+                  postId={postId}
+                  userName={userName}
+                  posts={posts}
+                  setPosts={setPosts}
+                  token={token}
+                  setActiveMessage={setActiveMessage}
+                  activeMessage={activeMessage}
+                  width={width}
+                  setWidth={setWidth}
+                  createPost={createPost}
+                  setCreatePost={setCreatePost}
                 />
+                
+              ) : (
+                createPost === false && (
+                  <SendMessage
+                    activeMessage={activeMessage}
+                    setActiveMessage={setActiveMessage}
+                    newMessage={newMessage}
+                    setNewMessage={setNewMessage}
+                    token={token}
+                  />
+                )
               )}
-              {(loggedIn && !activeMessage) && <AddNewPost token={token} />}
+              {/* {(loggedIn && !activeMessage && width < 850) || */}
+                {(createPost && <AddNewPost token={token} />)}
             </div>
           </Route>
           <Route exact path="/register">

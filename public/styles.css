@@ -7,7 +7,7 @@
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
 }
-html {
+body {
     background-color: #EFF6EE;
 }
 .title-font {
@@ -62,6 +62,7 @@ nav {
     border-top: #273043 solid 1px;
     padding: 10px;
     background-color: #EFF6EE;
+    gap: 1em;
     
 }
 .post > * {
@@ -69,10 +70,10 @@ nav {
 }
 .post > p {
     text-align: center;
-    color: gray;
+    color: #273043;
 }
 .post-info > p {
-    color: gray;
+    color: #273043;
 }
 b {
     color: #273043;
@@ -200,8 +201,9 @@ h2, h3 {
 .profile > h3 {
     margin: 50px 0 20px 0;
 }
-.post > a {
+.post > a, .edit-button{
     width: min-content;
+    margin: 10px;
 }
 /* .post:last-child {
     border-bottom: lightgray solid 1px;
@@ -213,6 +215,7 @@ button {
     height: 1.5rem;
     border-radius: 3px;
     min-width: 100px;
+    margin-top: 10px;
 }
 button:hover {
     background-color: #6F59FF;
@@ -233,4 +236,10 @@ input:checked {
 input {
     background-color: #EFF6EE;
     border: 1px lightgray solid;
+}
+.home-container {
+    text-align: center;
+}
+.home-container, .profile {
+    margin-top: 20px;
 }
