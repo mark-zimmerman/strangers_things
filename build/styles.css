@@ -1,14 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tiro+Bangla&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+body {
+    background-color: #EFF6EE;
+}
+.title-font {
+    font-family: 'Tiro Bangla', serif;
 }
 
 .header {
     display: flex; 
     flex-direction: row;
-    background-color:rgb(24, 35, 68);
-    color: white;
+    background-color:#273043;
+    color: #EFF6EE;
     height: 80px;
     
 }
@@ -44,17 +54,46 @@ nav {
 }
 .post {
     background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    border-top: #273043 solid 1px;
+    padding: 10px;
+    background-color: #EFF6EE;
+    gap: 1em;
+    
 }
+.post > * {
+    width: 70%;
+}
+.post > p {
+    text-align: center;
+    color: #273043;
+}
+.post-info > p {
+    color: #273043;
+}
+b {
+    color: #273043;
+}
+
 .add-new-post {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border: #273043 solid 1px;
+    padding: 10px;
+    margin: 121px 0 0 40px;
+    height: max-content;
+    flex: 1 1 0;
+    border-radius: 5px;
 }
 .form {
     display: flex;
     flex-direction: column;
-    width: 400px;
+  
     margin: auto;
     flex-grow: none;
 
@@ -79,11 +118,24 @@ nav {
     margin: 10px 0;
     width: 100%;
     font-size: 1.2rem;
+    background-color: #EFF6EE;
 }
 nav a {
     color: white;
     text-decoration: none;
 }
+h1 {
+    color: #273043;
+    font-family: 'Tiro Bangla', serif;
+}
+header > h1 {
+    color: #6F59FF;
+}
+h2, h3 {
+    color: #F17105;
+    font-family: 'Tiro Bangla', serif;
+}
+
 .search-posts {
     display: flex;
     flex-direction: column;
@@ -101,3 +153,93 @@ nav a {
     width: 50%;
 
 } */
+.posts-container {
+    display: flex;
+    justify-content: center;
+    
+}
+#posts {
+    flex: 2 1 0;
+}
+/* .add-new-post {
+    height: max-content;
+    flex: 1 1 0;
+    margin: 25px;
+} */
+.add-new-post > h1 {
+    text-align:center;
+}
+.post-btn {
+    margin: 0 auto;
+    width: 100px;
+
+}
+.post > h3 {
+    text-align: center;
+}
+.post-info {
+    width: 20%;
+    text-align: start;
+} 
+.posts-component-container {
+    display: flex;
+    margin: 0 30px 0 30px;
+}
+.new-post-form {
+    margin-top: 40px;
+}
+.message {
+    width: 80%;
+    
+}
+.profile {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+.profile > h3 {
+    margin: 50px 0 20px 0;
+}
+.post > a, .edit-button{
+    width: min-content;
+    margin: 10px;
+}
+/* .post:last-child {
+    border-bottom: lightgray solid 1px;
+} */
+button {
+    background-color: #273043;
+    color: #EFF6EE;
+    border: none;
+    height: 1.5rem;
+    border-radius: 3px;
+    min-width: 100px;
+    margin-top: 10px;
+}
+button:hover {
+    background-color: #6F59FF;
+    color: #EFF6EE;
+    transition:0.3s;
+}
+
+input[type='checkbox'] { 
+    background-color:#273043;
+    height: 15px;
+}
+input:checked {
+    background-color: green;
+}
+.add-new-post {
+    text-align: center;
+}
+input {
+    background-color: #EFF6EE;
+    border: 1px lightgray solid;
+}
+.home-container {
+    text-align: center;
+}
+.home-container, .profile {
+    margin-top: 20px;
+}
