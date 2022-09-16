@@ -11,7 +11,7 @@ import {
   MyPost,
   SendMessage,
 } from "./index";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import { fetchMe } from "../api";
 const App = () => {
   const baseURL =
@@ -55,9 +55,12 @@ const App = () => {
       <>
         <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} setActiveMessage={setActiveMessage}/>
         <Switch>
+          <Route exact path="/">
+            <Redirect to="/home" />
+          </Route>
           <Route exact path="/home">
             {loggedIn ? (
-              <Home userName={userName} />
+              <Home userName={userName}/>
             ) : (
               <LogIn
                 setLoggedIn={setLoggedIn}
@@ -71,7 +74,7 @@ const App = () => {
 
           <Route exact path="/posts">
             <div className="posts-component-container">
-              {createPost === false &&
+              {!createPost &&
               Object.keys(activeMessage).length === 0 ? (
                 <AllPosts
                   setPostId={setPostId}
@@ -89,7 +92,7 @@ const App = () => {
                 />
                 
               ) : (
-                createPost === false && (
+                (!createPost && Object.keys(activeMessage).length > 0 ) && (
                   <SendMessage
                     activeMessage={activeMessage}
                     setActiveMessage={setActiveMessage}
@@ -98,6 +101,7 @@ const App = () => {
                     token={token}
                   />
                 )
+                
               )}
               {/* {(loggedIn && !activeMessage && width < 850) || */}
                 {(createPost && <AddNewPost token={token} />)}
