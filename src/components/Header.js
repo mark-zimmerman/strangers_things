@@ -17,8 +17,8 @@ const Header = ({ loggedIn, setLoggedIn, setActiveMessage}) => {
             <NavLink to="/home" activeClassName="active">Home</NavLink>
           </li>
           <li>
-          {/* <NavLink to="/posts" activeClassName="active">Posts</NavLink> */}
-          <a href="/posts">Posts</a>
+          <NavLink to="/posts" activeClassName="active">Posts</NavLink>
+          {/* <a href="/posts">Posts</a> */}
             
           </li>
           {loggedIn && (
