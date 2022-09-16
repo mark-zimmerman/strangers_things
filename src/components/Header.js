@@ -14,16 +14,16 @@ const Header = ({ loggedIn, setLoggedIn, setActiveMessage}) => {
       <nav>
         <ul className="nav-list">
           <li>
-            <NavLink to="/home" activeClassName="active">Home</NavLink>
+            <NavLink to="/home" activeClassName="active" onClick={()=>setActiveMessage({})}>Home</NavLink>
           </li>
           <li>
-          <NavLink to="/posts" activeClassName="active">Posts</NavLink>
+          <NavLink to="/posts" activeClassName="active" onClick={()=>setActiveMessage({})}>Posts</NavLink>
           {/* <a href="/posts">Posts</a> */}
             
           </li>
           {loggedIn && (
             <li>
-              <NavLink to="/profile" activeClassName="active">Profile</NavLink>
+              <NavLink to="/profile" activeClassName="active" onClick={()=>setActiveMessage({})}>Profile</NavLink>
             </li>
           )}
           {loggedIn ? (
@@ -39,7 +39,7 @@ const Header = ({ loggedIn, setLoggedIn, setActiveMessage}) => {
           ) : (
             <li>
               {/* <a href="/">Log In</a> */}
-              <Link to="/">Log In</Link>
+              <Link to="/" onClick={()=>setActiveMessage({})}>Log In</Link>
             </li>
           )}
         </ul>
