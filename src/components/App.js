@@ -11,7 +11,7 @@ import {
   MyPost,
   SendMessage,
 } from "./index";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import { fetchMe } from "../api";
 const App = () => {
   const baseURL =
@@ -55,9 +55,12 @@ const App = () => {
       <>
         <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} setActiveMessage={setActiveMessage}/>
         <Switch>
+          <Route exact path="/">
+            <Redirect to="/home" />
+          </Route>
           <Route exact path="/home">
             {loggedIn ? (
-              <Home userName={userName} />
+              <Home userName={userName}/>
             ) : (
               <LogIn
                 setLoggedIn={setLoggedIn}
