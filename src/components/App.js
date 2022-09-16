@@ -49,13 +49,13 @@ const App = () => {
     };
     handleWindowResize();
   }, [token]);
-
+  
   return (
     <Router>
       <>
-        <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+        <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} setActiveMessage={setActiveMessage}/>
         <Switch>
-          <Route exact path="/">
+          <Route exact path="/home">
             {loggedIn ? (
               <Home userName={userName} />
             ) : (

@@ -15,12 +15,14 @@ const AllPosts = (props) => {
     async function getAllPosts() {
       const allPosts = await fetchAllPosts();
       setPosts(allPosts);
-      setActiveMessage('');
+      setActiveMessage({});
       console.log(posts);
+      console.log(activeMessage);
     }
     getAllPosts();
     
   }, []);
+  
 
   useEffect(() => {
     console.log(postId);
@@ -66,7 +68,7 @@ const AllPosts = (props) => {
                   setActiveMessage({
                     post: post,
                   })
-                  console.log(activeMessage);
+                  console.log('this is activeMessage', activeMessage);
                 }}>Send Message</button>
               ) : (
                 <a

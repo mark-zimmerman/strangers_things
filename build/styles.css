@@ -243,3 +243,6 @@ input {
 .home-container, .profile {
     margin-top: 20px;
 }
+.active {
+    color: #6F59FF;
+}

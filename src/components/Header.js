@@ -1,6 +1,8 @@
 import React from "react";
+import { Link, NavLink } from "react-router-dom";
 
-const Header = ({ loggedIn, setLoggedIn }) => {
+const Header = ({ loggedIn, setLoggedIn, setActiveMessage}) => {
+  // const {setActiveMessage} = props;
   function logOut() {
     window.localStorage.clear();
     setLoggedIn(false);
@@ -12,14 +14,16 @@ const Header = ({ loggedIn, setLoggedIn }) => {
       <nav>
         <ul className="nav-list">
           <li>
-            <a href="/">Home</a>
+            <NavLink to="/home" activeClassName="active">Home</NavLink>
           </li>
           <li>
-            <a href="/posts">Posts</a>
+          {/* <NavLink to="/posts" activeClassName="active">Posts</NavLink> */}
+          <a href="/posts">Posts</a>
+            
           </li>
           {loggedIn && (
             <li>
-              <a href="/profile">Profile</a>
+              <NavLink to="/profile" activeClassName="active">Profile</NavLink>
             </li>
           )}
           {loggedIn ? (
@@ -34,7 +38,8 @@ const Header = ({ loggedIn, setLoggedIn }) => {
             </li>
           ) : (
             <li>
-              <a href="/">Log In</a>
+              {/* <a href="/">Log In</a> */}
+              <Link to="/">Log In</Link>
             </li>
           )}
         </ul>
