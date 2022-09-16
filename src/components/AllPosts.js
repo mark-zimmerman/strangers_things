@@ -35,7 +35,7 @@ const AllPosts = (props) => {
         <form action="">
           <input type="text" placeholder="Search Posts" onChange={(event) => setSearchTerm(event.target.value)}/>
         </form>
-        <button onClick={(event)=> {
+        <button className="btn" onClick={(event)=> {
           setCreatePost(true);
           console.log(createPost)
         }}>+ Add New Post</button>
@@ -64,7 +64,7 @@ const AllPosts = (props) => {
                 </p>
               </div>
               {post.author.username !== userName ? (
-                <button className="post-btn" onClick={(event) => {
+                <button className="post-btn btn" onClick={(event) => {
                   setActiveMessage({
                     post: post,
                   })
@@ -78,7 +78,7 @@ const AllPosts = (props) => {
                     history.push("/mypost");
                   }}
                 >
-                  <button className="post-btn">View Post</button>
+                  <button className="post-btn btn">View Post</button>
                 </a>
               )}
             </div>

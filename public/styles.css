@@ -208,7 +208,7 @@ h2, h3 {
 /* .post:last-child {
     border-bottom: lightgray solid 1px;
 } */
-button {
+.btn {
     background-color: #273043;
     color: #EFF6EE;
     border: none;
@@ -217,7 +217,7 @@ button {
     min-width: 100px;
     margin-top: 10px;
 }
-button:hover {
+.btn:hover {
     background-color: #6F59FF;
     color: #EFF6EE;
     transition:0.3s;

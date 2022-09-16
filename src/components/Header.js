@@ -7,6 +7,7 @@ const Header = ({ loggedIn, setLoggedIn, setActiveMessage}) => {
     window.localStorage.clear();
     setLoggedIn(false);
   }
+  
 
   return (
     <header className="header">
