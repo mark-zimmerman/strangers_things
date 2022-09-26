@@ -17,12 +17,14 @@ const AllPosts = (props) => {
       setPosts(allPosts);
       setActiveMessage({});
       console.log(posts);
-      console.log(activeMessage);
     }
     getAllPosts();
     
   }, []);
-  
+  useEffect(()=> {
+    console.log("activeMessage", activeMessage);
+    console.log('createPost', createPost);
+  })
 
   useEffect(() => {
     console.log(postId);
@@ -37,7 +39,6 @@ const AllPosts = (props) => {
         </form>
         <button className="btn" onClick={(event)=> {
           setCreatePost(true);
-          console.log(createPost)
         }}>+ Add New Post</button>
       </div>
       {Object.values(posts).filter((post)=> {

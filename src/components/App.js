@@ -24,24 +24,24 @@ const App = () => {
   const [postId, setPostId] = useState("");
   const [messages, setMessages] = useState([]);
   const [activeMessage, setActiveMessage] = useState({});
+  const [createPost, setCreatePost] = useState(false);
   const [newMessage, setNewMessage] = useState("");
   const [edit, setEdit] = useState(true);
   const [width, setWidth] = useState(window.innerWidth);
-  const [createPost, setCreatePost] = useState(false);
+  
   const breakpoint = 850;
   useEffect(() => {
     if (window.localStorage.getItem("token")) {
       setToken(window.localStorage.getItem("token"));
       setLoggedIn(true);
       const getMe = async () => {
-        console.log("this is the token", token);
         const result = await fetchMe(token, setMessages);
-        console.log("this is the use effect in root", result);
         setUserName(result.data.username);
-        console.log("this is after setusername");
       };
       getMe();
+      console.log('createPost', createPost)
     }
+    console.log('width', width)
     const handleWindowResize = () => {
       setWidth(window.innerWidth);
       window.addEventListener("resize", handleWindowResize);
@@ -53,7 +53,7 @@ const App = () => {
   return (
     <Router>
       <>
-        <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} setActiveMessage={setActiveMessage}/>
+        <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} setActiveMessage={setActiveMessage} setCreatePost={setCreatePost}/>
         <Switch>
           <Route exact path="/">
             <Redirect to="/home" />
@@ -74,8 +74,8 @@ const App = () => {
 
           <Route exact path="/posts">
             <div className="posts-component-container">
-              {!createPost &&
-              Object.keys(activeMessage).length === 0 ? (
+              {
+              Object.keys(activeMessage).length === 0 && !createPost ? (
                 <AllPosts
                   setPostId={setPostId}
                   postId={postId}
@@ -103,8 +103,9 @@ const App = () => {
                 )
                 
               )}
-              {/* {(loggedIn && !activeMessage && width < 850) || */}
-                {(createPost && <AddNewPost token={token} />)}
+              {(loggedIn && !activeMessage && width > 850) || (createPost) && (
+                <AddNewPost token={token} />)
+                }
             </div>
           </Route>
           <Route exact path="/register">
