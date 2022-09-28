@@ -16,13 +16,16 @@ const SendMessage = (props) => {
     
     return (
         
-        <div>
+        <div className="new-message">
             <h1>New Message</h1>
             <form onSubmit={sendMessage}>
-                <input type="text" onChange={(event)=> {
+                {/* <input className="large-text-input" type="text" onChange={(event)=> {
                     setNewMessage(event.target.value);
-                }}></input>
-                <button typeof="submit">Send</button>
+                }}></input> */}
+                <textarea onChange={(event)=> {
+                    setNewMessage(event.target.value);
+                }}></textarea>
+                <button className="new-message-btn" typeof="submit">Send</button>
             </form>
         </div>
     )

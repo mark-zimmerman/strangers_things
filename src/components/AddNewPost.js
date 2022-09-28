@@ -30,11 +30,15 @@ const AddNewPost = (props) => {
                     title = event.target.value;
                   }}
                 />
-                <input type="text" placeholder='Description'
+                {/* <input className="large-text-input" type="text" placeholder='Description'
                 onChange={function(event) {
                     description = event.target.value;
                   }}
-                />
+                /> */}
+                <textarea placeholder='Description'
+                onChange={function(event) {
+                    description = event.target.value;
+                  }}></textarea>
                 <input type="text" placeholder='Price'
                 onChange={function(event) {
                     price = event.target.value;
@@ -47,7 +51,7 @@ const AddNewPost = (props) => {
                 />
                 <label htmlFor="">Will Deliver?</label>
                 <input type="checkbox"/>
-                <button>Create</button>
+                <button className="add-new-post-btn">Create</button>
 
             </form>
         </div>

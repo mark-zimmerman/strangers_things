@@ -83,12 +83,12 @@ b {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border: #273043 solid 1px;
     padding: 10px;
     margin: 121px 0 0 40px;
     height: max-content;
     flex: 1 1 0;
     border-radius: 5px;
+    width: 60%;
 }
 .form {
     display: flex;
@@ -186,7 +186,8 @@ h2, h3 {
     margin: 0 30px 0 30px;
 }
 .new-post-form {
-    margin-top: 40px;
+    width: 70%;
+
 }
 .message {
     width: 80%;
@@ -208,16 +209,17 @@ h2, h3 {
 /* .post:last-child {
     border-bottom: lightgray solid 1px;
 } */
-.btn {
+button {
     background-color: #273043;
     color: #EFF6EE;
     border: none;
     height: 1.5rem;
     border-radius: 3px;
-    min-width: 100px;
+    width: 10em;
     margin-top: 10px;
+
 }
-.btn:hover {
+button:hover {
     background-color: #6F59FF;
     color: #EFF6EE;
     transition:0.3s;
@@ -232,6 +234,7 @@ input:checked {
 }
 .add-new-post {
     text-align: center;
+    margin-top: 20px;
 }
 input {
     background-color: #EFF6EE;
@@ -245,4 +248,31 @@ input {
 }
 .active {
     color: #6F59FF;
+}
+textarea {
+    background-color: #EFF6EE;
+    min-height: 3rem;
+}
+form > textarea {
+    min-height: 5rem;
+    font-size: 1.2rem;
+}
+.add-new-post-btn, .new-message-btn {
+    margin: 0 auto;
+}
+.new-message {
+    margin: 0 auto;
+    width: 50%;
+}
+.new-message > h1 {
+    text-align: center;
+    margin: 20px;
+}
+.new-message > form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.new-message-btn {
+    margin-top: 1em;
 }
