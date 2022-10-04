@@ -49,6 +49,9 @@ const App = () => {
     };
     handleWindowResize();
   }, [token]);
+  useEffect(() => {
+    console.log("newMessage", newMessage);
+},[newMessage])
   
   return (
     <Router>

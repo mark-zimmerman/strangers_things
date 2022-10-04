@@ -13,15 +13,28 @@ const SendMessage = (props) => {
         const response = await createMessage(newMessage, activeMessage, token);
         console.log(response);
     }
+    console.log(activeMessage);
     
     return (
         
         <div className="new-message">
+            <div className="post new-message-post">
+              <h3>{activeMessage.post.title}</h3>
+              <p>{activeMessage.post.description}</p>
+              <div className="post-info">  
+                <p className="price">
+                  <b >Price: </b>{activeMessage.post.price} 
+                </p>
+                <p>
+                  <b>Seller:</b> {activeMessage.post.author.username}
+                </p>
+                <p>
+                  <b>Location:</b> {activeMessage.post.location}
+                </p>
+              </div>
+            </div>
             <h1>New Message</h1>
             <form onSubmit={sendMessage}>
-                {/* <input className="large-text-input" type="text" onChange={(event)=> {
-                    setNewMessage(event.target.value);
-                }}></input> */}
                 <textarea onChange={(event)=> {
                     setNewMessage(event.target.value);
                 }}></textarea>
